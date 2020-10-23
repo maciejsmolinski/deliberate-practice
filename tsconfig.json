@@ -11,6 +11,10 @@
       "dom"
     ],
     "rootDir": "src",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "include": [
+      "src",
+      "untyped.d.ts"
+    ]
   }
 }
