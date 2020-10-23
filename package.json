@@ -5,11 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "parcel build index.html",
-    "Xstart": "react-scripts-ts start",
-    "Xbuild": "react-scripts-ts build",
-    "Xtest": "react-scripts-ts test --env=jsdom",
-    "Xeject": "react-scripts-ts eject"
+    "build": "parcel build index.html"
   },
   "dependencies": {
     "@types/react": "16.9.53",
