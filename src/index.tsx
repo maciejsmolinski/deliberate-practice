@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as ReactDOM from 'react-dom';
-import { delayed } from './fetch';
+import { delayed } from './task';
 
 function Main() {
   const [message, setMessage] = useState('Main Component!');
