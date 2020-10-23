@@ -1,4 +1,4 @@
-import { task as taskFn } from 'folktale/concurrency/task';
+import { task as taskFn, of as ofFn } from 'folktale/concurrency/task';
 
 interface ITask<T> {
   run(): ITaskExecution<T>;
@@ -10,16 +10,12 @@ interface ITaskExecution<T> {
   promise(): Promise<T>;
 }
 
-interface IResolver {
-  resolve(x: any): void;
+interface IResolver<T> {
+  resolve(x: T): void;
 }
 
-const task: (fn: (resolver: IResolver) => void) => ITask<any> = taskFn;
+export const task: <T>(fn: (resolver: IResolver<T>) => void) => ITask<T> = taskFn;
 
-export const fetch = (): ITask<number> => {
-  return task((resolver) => resolver.resolve(100));
-};
+export const of: <T>(value: T) => ITask<T> = ofFn;
 
-export const fetchPlus2 = (): ITask<number> => {
-  return fetch().map((a: number) => a + 2);
-};
+export const delayed = <T>(value: T, timeout: number): ITask<T> => task(resolver => setTimeout(() => resolver.resolve(value), timeout));
