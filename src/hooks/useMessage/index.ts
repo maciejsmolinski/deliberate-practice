@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { delayed } from '../../task';
+import { delayed } from '../../utils/task';
 
 export default function useMessage(initial = '') {
   const [message, setMessage] = useState(initial);
