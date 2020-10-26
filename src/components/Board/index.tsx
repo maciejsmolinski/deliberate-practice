@@ -1,23 +1,41 @@
 import React from 'react';
-import { Columns, Card } from 'bumbag';
+import { Columns, Card as BumbagCard } from 'bumbag';
+import { Board, Status, Card } from './types';
+import { empty, column } from './board';
 
-export default function Board() {
+export { Status };
+
+interface BoardCard {
+  title: string;
+  status: Status;
+}
+
+type BoardProps = {
+  cards: BoardCard[];
+};
+
+export default function Board({ cards = [] }: BoardProps) {
+  const board: Board = cards.reduce((map, card) => {
+    const { title, status } = card;
+
+    const bucket = map.get(status) || [];
+    bucket.push(title);
+
+    return map.set(status, bucket);
+  }, empty());
+
   return (
     <Columns>
-      <Columns.Column>
-        Can&apos;t do
-        <Card>Property Based Testing</Card>
-        <Card>SProxy - Type level programming</Card>
-      </Columns.Column>
-      <Columns.Column>
-        Can do with effort
-        <Card>Unit Tests</Card>
-      </Columns.Column>
-      <Columns.Column>
-        Mastered/Automated
-        <Card>FFI</Card>
-        <Card>JSON Encoding/Decoding</Card>
-      </Columns.Column>
+      {[...board].map(([status, cards]) => {
+        return (
+          <Columns.Column key={status}>
+            {column(status)}
+            {cards.map((card: Card) => (
+              <BumbagCard key={card}>{card}</BumbagCard>
+            ))}
+          </Columns.Column>
+        );
+      })}
     </Columns>
   );
 }
