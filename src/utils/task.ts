@@ -1,6 +1,6 @@
 import { task, of, ITask } from 'folktale/concurrency/task';
 
-export { task, of };
+export { task, of, ITask };
 
 /**
  * Returns a task which resolves successfully after given timeout
