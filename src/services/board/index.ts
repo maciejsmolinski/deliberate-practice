@@ -1,19 +1,19 @@
 import { delayed, ITask } from '../../utils/task';
-import { Status } from '../../components/board';
+import { Skill } from '../../types';
 
 type BoardCard = {
   title: string;
-  status: Status;
+  status: Skill.Category;
 };
 
 type Board = BoardCard[];
 
 const BOARD = [
-  { title: 'Property-based testing', status: Status.CannotDo },
-  { title: 'SProxy - Type level programming', status: Status.CannotDo },
-  { title: 'Unit Tests', status: Status.CanDoWithEffort },
-  { title: 'FFI', status: Status.Mastered },
-  { title: 'JSON Encoding/Decoding', status: Status.Mastered },
+  { title: 'Property-based testing', status: Skill.Category.CannotDo },
+  { title: 'SProxy - Type level programming', status: Skill.Category.CannotDo },
+  { title: 'Unit Tests', status: Skill.Category.CanDoWithEffort },
+  { title: 'FFI', status: Skill.Category.Mastered },
+  { title: 'JSON Encoding/Decoding', status: Skill.Category.Mastered },
 ];
 
 export function empty(): Board {

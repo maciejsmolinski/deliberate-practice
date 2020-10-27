@@ -1,11 +1,7 @@
-export enum Status {
-  CannotDo,
-  CanDoWithEffort,
-  Mastered,
-}
+import { Skill } from '../../types';
 
 export type Card = string;
 
 export type Cards = Card[];
 
-export type Board = Map<Status, Cards>;
+export type Board = Map<Skill.Category, Cards>;
