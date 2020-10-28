@@ -1,13 +1,12 @@
 import React from 'react';
-import { Columns, Card as BumbagCard } from 'bumbag';
-import { Board, Status, Card } from './types';
+import { Group, Box, Avatar, Columns } from 'bumbag';
+import { Board, Card } from './types';
+import { Skill } from '../../types';
 import { empty, column } from './board';
-
-export { Status };
 
 interface BoardCard {
   title: string;
-  status: Status;
+  status: Skill.Category;
 }
 
 type BoardProps = {
@@ -31,7 +30,17 @@ export default function Board({ cards = [] }: BoardProps) {
           <Columns.Column key={status}>
             {column(status)}
             {cards.map((card: Card) => (
-              <BumbagCard key={card}>{card}</BumbagCard>
+              <Group alignY="center" key={card}>
+                <Box>
+                  <Avatar
+                    initials="PS"
+                    palette="primary"
+                    alt="PureScript"
+                    size="small"
+                  />
+                </Box>
+                <Box padding="0.5rem">{card}</Box>
+              </Group>
             ))}
           </Columns.Column>
         );
