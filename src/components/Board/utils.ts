@@ -1,4 +1,4 @@
-import { Board } from './types';
+import { InputBoard, Board } from './types';
 import { Skill } from '../../types';
 
 const COLUMNS: Map<Skill.Category, string> = new Map([
@@ -7,14 +7,25 @@ const COLUMNS: Map<Skill.Category, string> = new Map([
   [Skill.Category.Mastered, 'Mastered'],
 ]);
 
-export function column(identifier: Skill.Category) {
+export function getColumnName(identifier: Skill.Category) {
   return COLUMNS.get(identifier);
 }
 
-export function empty(): Board {
+function emptyBoard(): Board {
   return new Map([
     [Skill.Category.CannotDo, []],
     [Skill.Category.CanDoWithEffort, []],
     [Skill.Category.Mastered, []],
   ]);
+}
+
+export function fromInputBoard({ cards = [] }: InputBoard): Board {
+  return cards.reduce((map, card) => {
+    const { title, status } = card;
+
+    const bucket = map.get(status) || [];
+    bucket.push(title);
+
+    return map.set(status, bucket);
+  }, emptyBoard());
 }

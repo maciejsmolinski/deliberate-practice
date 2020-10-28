@@ -1,34 +1,19 @@
 import React from 'react';
 import { Group, Heading, Box, Avatar, Columns, Stack } from 'bumbag';
-import { Board, Card } from './types';
-import { Skill } from '../../types';
-import { empty, column } from './board';
+import { InputBoard, Board, Card } from './types';
+import { getColumnName, fromInputBoard } from './utils';
 
-interface BoardCard {
-  title: string;
-  status: Skill.Category;
-}
-
-type BoardProps = {
-  cards: BoardCard[];
-};
+type BoardProps = {} & InputBoard;
 
 export default function Board({ cards = [] }: BoardProps) {
-  const board: Board = cards.reduce((map, card) => {
-    const { title, status } = card;
-
-    const bucket = map.get(status) || [];
-    bucket.push(title);
-
-    return map.set(status, bucket);
-  }, empty());
+  const board: Board = fromInputBoard({ cards });
 
   return (
     <Columns>
       {[...board].map(([status, cards]) => {
         return (
           <Columns.Column key={status}>
-            <Heading use="h5">{column(status)}</Heading>
+            <Heading use="h5">{getColumnName(status)}</Heading>
             <Stack spacing="minor-1">
               {cards.map((card: Card) => (
                 <Group alignY="center" key={card}>
