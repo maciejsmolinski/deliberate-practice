@@ -21,5 +21,5 @@ export function empty(): Board {
 }
 
 export function get(): ITask<Board> {
-  return delayed(BOARD, 1200);
+  return delayed(BOARD, 0);
 }
