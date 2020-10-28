@@ -1,5 +1,5 @@
 import React from 'react';
-import { Group, Box, Avatar, Columns } from 'bumbag';
+import { Group, Heading, Box, Avatar, Columns, Stack } from 'bumbag';
 import { Board, Card } from './types';
 import { Skill } from '../../types';
 import { empty, column } from './board';
@@ -28,20 +28,22 @@ export default function Board({ cards = [] }: BoardProps) {
       {[...board].map(([status, cards]) => {
         return (
           <Columns.Column key={status}>
-            {column(status)}
-            {cards.map((card: Card) => (
-              <Group alignY="center" key={card}>
-                <Box>
-                  <Avatar
-                    initials="PS"
-                    palette="primary"
-                    alt="PureScript"
-                    size="small"
-                  />
-                </Box>
-                <Box padding="0.5rem">{card}</Box>
-              </Group>
-            ))}
+            <Heading use="h5">{column(status)}</Heading>
+            <Stack spacing="minor-1">
+              {cards.map((card: Card) => (
+                <Group alignY="center" key={card}>
+                  <Box>
+                    <Avatar
+                      initials="PS"
+                      palette="primary"
+                      alt="PureScript"
+                      size="small"
+                    />
+                  </Box>
+                  <Box padding="0.5rem">{card}</Box>
+                </Group>
+              ))}
+            </Stack>
           </Columns.Column>
         );
       })}
