@@ -10,12 +10,12 @@ export default function Board({ cards = [] }: BoardProps) {
 
   return (
     <Columns>
-      {[...board].map(([status, cards]) => {
+      {[...board].map(([status, items]) => {
         return (
           <Columns.Column key={status}>
             <Heading use="h5">{getColumnName(status)}</Heading>
             <Stack spacing="minor-1">
-              {cards.map((card: Card) => (
+              {items.map((card: Card) => (
                 <Group alignY="center" key={card}>
                   <Box>
                     <Avatar

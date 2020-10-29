@@ -1,21 +1,21 @@
 import { InputBoard, Board } from './types';
-import { Skill } from '../../types';
+import { Category } from '../../types';
 
-const COLUMNS: Map<Skill.Category, string> = new Map([
-  [Skill.Category.CannotDo, 'Cannot do'],
-  [Skill.Category.CanDoWithEffort, 'Can do with effort'],
-  [Skill.Category.Mastered, 'Mastered'],
+const COLUMNS: Map<Category, string> = new Map([
+  [Category.CannotDo, 'Cannot do'],
+  [Category.CanDoWithEffort, 'Can do with effort'],
+  [Category.Mastered, 'Mastered'],
 ]);
 
-export function getColumnName(identifier: Skill.Category) {
+export function getColumnName(identifier: Category) {
   return COLUMNS.get(identifier);
 }
 
 function emptyBoard(): Board {
   return new Map([
-    [Skill.Category.CannotDo, []],
-    [Skill.Category.CanDoWithEffort, []],
-    [Skill.Category.Mastered, []],
+    [Category.CannotDo, []],
+    [Category.CanDoWithEffort, []],
+    [Category.Mastered, []],
   ]);
 }
 
