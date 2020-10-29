@@ -1,19 +1,18 @@
 declare module "folktale/concurrency/task" {
 
-    export interface ITask<T> {
-        run(): ITaskExecution<T>;
-
-        map<U>(mapFn: (x: T) => U): ITask<U>;
+    export interface Task<T> {
+        run(): TaskExecution<T>;
+        map<A>(mapFn: (x: T) => A): Task<A>;
     }
 
-    interface ITaskExecution<T> {
+    interface TaskExecution<T> {
         promise(): Promise<T>;
     }
 
-    interface IResolver<T> {
+    interface TaskResolver<T> {
         resolve(x: T): void;
     }
 
-    export function task<T>(fn: (resolver: IResolver<T>) => void): ITask<T>;
-    export function of<T>(value: T): ITask<T>;
+    export function task<T>(fn: (resolver: TaskResolver<T>) => void): Task<T>;
+    export function of<T>(value: T): Task<T>;
 }

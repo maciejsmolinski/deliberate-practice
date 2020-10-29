@@ -1,4 +1,4 @@
-import { delayed, ITask } from '../../utils/task';
+import { delayed, Task } from '../../utils/task';
 import { Skill } from '../../types';
 
 type BoardCard = {
@@ -20,6 +20,6 @@ export function empty(): Board {
   return [];
 }
 
-export function get(): ITask<Board> {
+export function get(): Task<Board> {
   return delayed(BOARD, 0);
 }
