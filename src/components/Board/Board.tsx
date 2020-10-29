@@ -1,7 +1,8 @@
 import React from 'react';
-import { Group, Heading, Box, Avatar, Columns, Stack } from 'bumbag';
-import { InputBoard, Board, Card } from './types';
+import { Heading, Columns, Stack } from 'bumbag';
+import { InputBoard, Board, Card as CardType } from './types';
 import { getColumnName, fromInputBoard } from './utils';
+import Card from '../Card';
 
 type BoardProps = {} & InputBoard;
 
@@ -15,18 +16,8 @@ export default function Board({ cards = [] }: BoardProps) {
           <Columns.Column key={status}>
             <Heading use="h5">{getColumnName(status)}</Heading>
             <Stack spacing="minor-1">
-              {items.map((card: Card) => (
-                <Group alignY="center" key={card}>
-                  <Box>
-                    <Avatar
-                      initials="PS"
-                      palette="primary"
-                      alt="PureScript"
-                      size="small"
-                    />
-                  </Box>
-                  <Box padding="0.5rem">{card}</Box>
-                </Group>
+              {items.map((card: CardType) => (
+                <Card key={card} title={card} />
               ))}
             </Stack>
           </Columns.Column>
