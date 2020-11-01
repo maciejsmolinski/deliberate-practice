@@ -1,0 +1,8 @@
+{
+  "name": "server",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A server of the deliberate practice board application",
+  "main": "index.js",
+  "license": "MIT"
+}
