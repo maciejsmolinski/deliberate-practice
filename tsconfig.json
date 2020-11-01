@@ -13,7 +13,7 @@
     "rootDir": "src",
     "moduleResolution": "node",
     "include": [
-      "src",
+      "client",
       "untyped.d.ts"
     ],
     "downlevelIteration": true,
