@@ -5,7 +5,8 @@
   "description": "A totally for-fun project inspired by Kathy Sierra's talks and books promoting the idea of deliberate practice",
   "workspaces": ["client", "server"],
   "scripts": {
-    "start": "yarn workspace client start",
+    "start": "yarn workspace client start & yarn workspace server start",
+    "watch": "yarn workspace client start & yarn workspace server watch",
     "build": "yarn workspace client build",
     "lint": "yarn workspace client lint:ts"
   },

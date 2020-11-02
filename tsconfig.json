@@ -10,12 +10,7 @@
       "es6",
       "dom"
     ],
-    "rootDir": "src",
     "moduleResolution": "node",
-    "include": [
-      "client",
-      "untyped.d.ts"
-    ],
     "downlevelIteration": true,
     "strict": true
   }
