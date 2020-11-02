@@ -1,5 +1,5 @@
 export enum Category {
-  CannotDo,
-  CanDoWithEffort,
-  Mastered,
+  CannotDo = 'CannotDo',
+  CanDoWithEffort = 'CanDoWithEffort',
+  Mastered = 'Mastered',
 }
