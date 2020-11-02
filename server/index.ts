@@ -1,4 +1,6 @@
-const { ApolloServer, gql } = require('apollo-server');
+import { ApolloServer, gql } from 'apollo-server';
+import { Board } from './types';
+import { Category } from '../types';
 
 const typeDefs = gql`
   enum Category {
@@ -24,14 +26,12 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    board() {
+    board(): Board {
       return {
         cards: [
-          {
-            status: 'CannotDo',
-            title: 'Skill to learn',
-          },
-          { status: 'Mastered', title: 'Mastered skill' },
+          { status: Category.CannotDo, title: 'Skill to learn' },
+          { status: Category.CanDoWithEffort, title: 'Skill being learned' },
+          { status: Category.Mastered, title: 'Mastered skill' },
         ],
       };
     },
