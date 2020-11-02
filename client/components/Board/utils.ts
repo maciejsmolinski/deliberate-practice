@@ -1,5 +1,5 @@
 import { InputBoard, Board } from './types';
-import { Category } from '../../types';
+import { Category } from '../../../types';
 
 const COLUMNS: Map<Category, string> = new Map([
   [Category.CannotDo, 'Cannot do'],

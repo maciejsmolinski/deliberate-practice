@@ -1,4 +1,4 @@
-import { Category } from '../../types';
+import { Category } from '../../../types';
 
 export type Card = string;
 
@@ -11,4 +11,4 @@ interface InputCard {
   status: Category;
 }
 
-export type InputBoard = { cards: InputCard[] }
+export type InputBoard = { cards: InputCard[] };

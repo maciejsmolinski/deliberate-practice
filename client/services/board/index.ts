@@ -1,5 +1,5 @@
 import { delayed, Task } from '../../utils/task';
-import { Category } from '../../types';
+import { Category } from '../../../types';
 
 type BoardCard = {
   title: string;
