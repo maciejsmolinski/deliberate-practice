@@ -1,14 +1,7 @@
 import { delayed, Task } from '../../utils/task';
-import { Category } from '../../../types';
+import { Category, Cards } from '../../../types';
 
-type BoardCard = {
-  title: string;
-  status: Category;
-};
-
-type Board = BoardCard[];
-
-const BOARD = [
+const BOARD: Cards = [
   { title: 'Property-based testing', status: Category.CannotDo },
   { title: 'SProxy - Type level programming', status: Category.CannotDo },
   { title: 'Unit Tests', status: Category.CanDoWithEffort },
@@ -16,10 +9,10 @@ const BOARD = [
   { title: 'JSON Encoding/Decoding', status: Category.Mastered },
 ];
 
-export function empty(): Board {
+export function empty(): Cards {
   return [];
 }
 
-export function get(): Task<Board> {
+export function get(): Task<Cards> {
   return delayed(BOARD, 0);
 }

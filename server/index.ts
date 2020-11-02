@@ -1,6 +1,5 @@
 import { ApolloServer, gql } from 'apollo-server';
-import { Board } from './types';
-import { Category } from '../types';
+import { Category, Board } from '../types';
 
 const typeDefs = gql`
   enum Category {

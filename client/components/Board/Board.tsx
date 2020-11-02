@@ -1,13 +1,13 @@
 import React from 'react';
 import { Heading, Columns, Stack } from 'bumbag';
-import { InputBoard, Board, Card as CardType } from './types';
 import { getColumnName, fromInputBoard } from './utils';
 import Card from '../Card';
+import { Board } from '../../../types';
 
-type BoardProps = {} & InputBoard;
+type BoardProps = {} & Board;
 
 export default function Board({ cards = [] }: BoardProps) {
-  const board: Board = fromInputBoard({ cards });
+  const board = fromInputBoard({ cards });
 
   return (
     <Columns>
@@ -16,7 +16,7 @@ export default function Board({ cards = [] }: BoardProps) {
           <Columns.Column key={status}>
             <Heading use="h5">{getColumnName(status)}</Heading>
             <Stack spacing="minor-1">
-              {items.map((card: CardType) => (
+              {items.map(card => (
                 <Card key={card} title={card} />
               ))}
             </Stack>
