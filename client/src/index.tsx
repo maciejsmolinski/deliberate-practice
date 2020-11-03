@@ -1,9 +1,9 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Heading, Stack } from 'bumbag';
-import Container from './components/Container';
-import Board from './components/Board';
-import useBoard from './hooks/useBoard';
+import Container from '../components/Container';
+import Board from '../components/Board';
+import useBoard from '../hooks/useBoard';
 
 function Main() {
   const cards = useBoard();

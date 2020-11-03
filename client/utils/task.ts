@@ -1,4 +1,6 @@
-import { task, of, Task } from 'folktale/concurrency/task';
+import { task, of } from 'folktale/concurrency/task';
+
+type Task = any;
 
 export { task, of, Task };
 
