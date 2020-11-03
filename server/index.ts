@@ -43,5 +43,6 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({ url }: { url: string }) => {
+  /* tslint:disable-next-line no-console */
   console.log('Server ready at ' + url);
 });

@@ -8,7 +8,7 @@
     "start": "yarn workspace client start & yarn workspace server start",
     "watch": "yarn workspace client start & yarn workspace server watch",
     "build": "yarn workspace client build",
-    "lint": "yarn workspace client lint:ts"
+    "lint": "yarn workspaces run lint:ts"
   },
   "dependencies": {},
   "devDependencies": {
@@ -17,8 +17,8 @@
   "keywords": [],
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm run build"
+      "pre-commit": "yarn lint",
+      "pre-push": "yarn build"
     }
   }
 }
