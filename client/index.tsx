@@ -4,8 +4,9 @@ import { Heading, Stack } from 'bumbag';
 import Container from './components/Container';
 import Board from './components/Board';
 import useBoard from './hooks/useBoard';
+import withApollo from './providers/apollo';
 
-function Main() {
+const Main = withApollo(function Main() {
   const cards = useBoard();
 
   return (
@@ -16,6 +17,6 @@ function Main() {
       </Stack>
     </Container>
   );
-}
+});
 
 ReactDOM.render(<Main />, document.getElementById('app'));

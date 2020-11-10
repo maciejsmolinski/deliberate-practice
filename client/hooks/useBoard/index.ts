@@ -1,17 +1,34 @@
 import { useEffect, useState } from 'react';
-import { empty, get } from '../../services/board';
+import { useQuery, gql } from '@apollo/client';
+import { Cards } from '../../../types';
+
+const BOARD_QUERY = gql`
+  query GetBoard {
+    board {
+      cards {
+        title
+        status
+      }
+    }
+  }
+`;
+
+const empty = (): Cards => [];
 
 export default function useBoard(initial = empty()) {
+  const { loading, error, data } = useQuery(BOARD_QUERY);
   const [board, setBoard] = useState(initial);
 
   useEffect(
     () => {
-      get()
-        .run()
-        .promise()
-        .then(setBoard);
+      if (data) {
+        setBoard(data.board.cards);
+      }
+      if (error) {
+        setBoard(initial);
+      }
     },
-    [board],
+    [loading],
   );
 
   return board;
